@@ -1,14 +1,3 @@
-<!-- Top Navigation -->
-<nav class="bg-white border-b border-gray-200 px-4 py-3 flex justify-between items-center shadow-sm">
-  <div class="text-2xl font-bold text-gray-800">
-    Guitar Planner
-  </div>
-  <div class="space-x-4">
-    <%= link_to 'Sign Up', root_path, class: 'text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center' %>
-    <%= link_to 'Login', root_path, class: 'text-blue-600 border border-blue-600 hover:bg-blue-600 hover:text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center' %>
-  </div>
-</nav>
-
 <!-- Hero Section -->
 <section class="bg-gray-50 py-20 px-6 text-center">
   <h1 class="text-5xl font-extrabold text-gray-900 mb-6">Guitar Planner</h1>
@@ -19,19 +8,3 @@
     <img src="https://via.placeholder.com/300x200?text=Practice+Schedule" alt="Practice Schedule" class="rounded shadow-md">
   </div>
 </section>
-
-<!-- Footer -->
-<footer class="bg-white border-t border-gray-200 mt-12 py-6 px-4">
-  <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-    <div class="mb-2 md:mb-0">
-      © <%= Time.current.year %> Guitar Planner. All rights reserved.
-    </div>
-    <div class="space-x-4">
-      <%= link_to 'FAQ', root_path, class: 'hover:underline' %>
-      <%= link_to 'Contact', root_path, class: 'hover:underline' %>
-      <%= link_to 'Privacy Policy', root_path, class: 'hover:underline' %>
-      <%= link_to 'Terms of Service', root_path, class: 'hover:underline' %>
-    </div>
-  </div>
-</footer>
-

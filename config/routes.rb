@@ -1,8 +1,21 @@
 Rails.application.routes.draw do
+  resource :session
+  resources :passwords, param: :token
   root "pages#landing"
 
   get "pages/landing"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  #
+  get  "signup", to: "users#new"
+  post "signup", to: "users#create"
+
+  get    "login",  to: "sessions#new"
+  post   "login",  to: "sessions#create"
+  delete "logout", to: "sessions#destroy"
+
+  resources :users, only: [:new, :create, :show]
+  get "user_home", to: "users#show"
+
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
