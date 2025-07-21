@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      session[:user_id] = @user.id
+      start_new_session_for(@user)
       redirect_to user_home_path, notice: "Signed up successfully!"
     else
       render :new, status: :unprocessable_entity
