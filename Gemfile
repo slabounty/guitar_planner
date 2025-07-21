@@ -59,7 +59,7 @@ group :development do
 end
 
 group :development, :test do
-  gem "rspec-rails", "~> 6.1.0" # Use the latest stable version
+  gem "rspec-rails", "~> 8.0.1" # Use the latest stable version
 end
 
 gem "tailwindcss-ruby", "~> 4.1"
