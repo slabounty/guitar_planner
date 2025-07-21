@@ -19,7 +19,6 @@ RSpec.describe "User Signup", type: :request do
       follow_redirect!
       expect(response).to be_successful
       expect(response.body).to include("Welcome back")
-
     end
   end
 end
