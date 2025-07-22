@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "planners/new"
+  get "planners/create"
   resource :session
   resources :passwords, param: :token
   root "pages#landing"
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
   resources :users, only: [ :new, :create, :show ]
   get "user_home", to: "users#show"
 
+  resources :planners, only: [:new, :create]
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
