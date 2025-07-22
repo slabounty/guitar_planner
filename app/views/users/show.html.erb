@@ -1,8 +1,23 @@
-<div class="max-w-2xl mx-auto mt-12 p-8 bg-white shadow-md rounded-lg">
-  <h1 class="text-2xl font-semibold text-gray-800 mb-4">Welcome back!</h1>
-  <p class="text-gray-700">This is your Guitar Planner homepage.</p>
+<div class="max-w-4xl mx-auto mt-10 px-4">
+  <h1 class="text-3xl font-bold text-gray-800 mb-6">Welcome back, <%= @user.email_address %></h1>
 
-  <div class="mt-6">
-    <p class="text-sm text-gray-500">We'll put your dashboard and planner tools here soon.</p>
-  </div>
+  <% if @planners.any? %>
+    <div class="grid gap-4">
+      <% @planners.each do |planner| %>
+        <div class="bg-white rounded-xl shadow border p-4">
+          <div class="flex justify-between items-center mb-2">
+            <h2 class="text-xl font-semibold text-gray-700">Planner: <%= planner.start_date.strftime("%B %d, %Y") %></h2>
+            <span class="text-sm text-gray-500"><%= planner.created_at.strftime("%l:%M %p, %b %d") %></span>
+          </div>
+          <ul class="text-gray-600 space-y-1">
+            <li><strong>Technique:</strong> <%= planner.technique.presence || "—" %></li>
+            <li><strong>Fretboard:</strong> <%= planner.fretboard.presence || "—" %></li>
+            <li><strong>Repertoire:</strong> <%= planner.repertoire.presence || "—" %></li>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-gray-500 text-lg">You don’t have any planners yet. Let’s create one!</p>
+  <% end %>
 </div>
