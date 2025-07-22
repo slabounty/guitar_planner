@@ -7,7 +7,7 @@
         <div class="bg-white rounded-xl shadow border p-4">
           <div class="flex justify-between items-center mb-2">
             <h2 class="text-xl font-semibold text-gray-700">Planner: <%= planner.start_date.strftime("%B %d, %Y") %></h2>
-            <span class="text-sm text-gray-500"><%= planner.created_at.strftime("%l:%M %p, %b %d") %></span>
+            <span class="text-sm text-gray-500"><%= planner.created_at&.strftime("%l:%M %p, %b %d") %></span>
           </div>
           <ul class="text-gray-600 space-y-1">
             <li><strong>Technique:</strong> <%= planner.technique.presence || "—" %></li>
@@ -18,6 +18,6 @@
       <% end %>
     </div>
   <% else %>
-    <p class="text-gray-500 text-lg">You don’t have any planners yet. Let’s create one!</p>
+    <p class="text-gray-500 text-lg">You don't have any planners yet. Let’s create one!</p>
   <% end %>
 </div>
