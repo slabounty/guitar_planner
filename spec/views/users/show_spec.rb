@@ -22,6 +22,7 @@ RSpec.describe "users/show.html.erb" do
   context "when the user has planners" do
     before do
       assign(:planners, [Planner.new(
+        id: 123,
         start_date: Date.today,
         technique: "some technique",
         fretboard: "some fretboard",
