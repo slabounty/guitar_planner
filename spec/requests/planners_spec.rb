@@ -31,4 +31,18 @@ RSpec.describe "Planners", type: :request do
       expect(response.body).to include("Sweep Picking")
     end
   end
+
+  describe "DELETE /planners/:id" do
+    let!(:planner) { FactoryBot.create(:planner, user: @user) }
+
+    it "deletes the planner and redirects to user home" do
+      expect {
+        delete planner_path(planner)
+      }.to change { @user.planners.count }.by(-1)
+
+      expect(response).to redirect_to(user_home_path)
+      follow_redirect!
+      expect(response.body).to include("Planner deleted successfully")
+    end
+  end
 end

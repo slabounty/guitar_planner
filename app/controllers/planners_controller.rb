@@ -13,6 +13,12 @@ class PlannersController < ApplicationController
     end
   end
 
+  def destroy
+    planner = Current.session.user.planners.find(params[:id])
+    planner.destroy
+    redirect_to user_home_path, notice: "Planner deleted successfully."
+  end
+
   private
 
   def planner_params
