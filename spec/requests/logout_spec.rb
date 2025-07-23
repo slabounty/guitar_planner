@@ -1,10 +1,8 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "User Logout", type: :request do
-  let!(:user) { User.create!(email_address: "test@example.com", password: "password", password_confirmation: "password") }
-
   before do
-    post login_path, params: { email_address: "test@example.com", password: "password" }
+    @user = signup_and_login
   end
 
   it "logs the user out and clears session" do
@@ -12,7 +10,9 @@ RSpec.describe "User Logout", type: :request do
 
     expect(response).to redirect_to(root_path)
     follow_redirect!
-    expect(response.body).to include("Guitar Planner")
-    expect(cookies[:session_id]).to be_blank
+
+    # Try to access user_home again — it should redirect to login
+    get user_home_path
+    expect(response).to redirect_to(new_session_path)
   end
 end

@@ -2,23 +2,14 @@ require "rails_helper"
 
 RSpec.describe "Users", type: :request do
   let(:email) { "test@example.com" }
-  let(:password) { "password123" }
 
   before do
-    post signup_path, params: {
-      user: {
-        email_address: email,
-        password: password,
-        password_confirmation: password
-      }
-    }
-    follow_redirect! # follow redirect to user_home
+    @user = signup_and_login(email: email)
   end
 
   describe "GET /user_home" do
     it "shows the user's home page with planners" do
-      user = User.find_by(email_address: email)
-      FactoryBot.create(:planner, user: user, technique: "Legato")
+      FactoryBot.create(:planner, user: @user, technique: "Legato")
 
       get user_home_path
 
