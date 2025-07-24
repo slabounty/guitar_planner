@@ -59,9 +59,14 @@ group :development do
 end
 
 group :development, :test do
+  gem "factory_bot_rails", "~> 6.5"
   gem "rspec-rails", "~> 6.1.0" # Use the latest stable version
 end
+
+gem "simplecov", require: false, group: :test
 
 gem "tailwindcss-ruby", "~> 4.1"
 
 gem "tailwindcss-rails", "~> 4.3"
+
+gem "factory_bot", "~> 6.5"

@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def show
     @user = Current.session&.user
+    @planners = @user.planners.order(start_date: :desc)
   end
 
   private
