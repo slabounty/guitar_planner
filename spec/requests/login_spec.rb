@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe "User Login", type: :request do
   let(:email_address) { "test@example.com" }
   let(:today) { Date.today }
-  let(:technique) { "technique 1"}
-  let(:fretboard) { "fretboard 1"}
-  let(:repertoire) { "repertoire 1"}
+  let(:technique) { "technique 1" }
+  let(:fretboard) { "fretboard 1" }
+  let(:repertoire) { "repertoire 1" }
   let!(:user) { User.create!(email_address: email_address, password: "password", password_confirmation: "password") }
   let!(:planner_1) { Planner.create!(user_id: user.id, start_date: today, technique: technique, fretboard: fretboard, repertoire: repertoire) }
 
