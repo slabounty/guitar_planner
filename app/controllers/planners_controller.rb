@@ -13,6 +13,19 @@ class PlannersController < ApplicationController
     end
   end
 
+  def edit
+    @planner = Current.session.user.planners.find(params[:id])
+  end
+
+  def update
+    @planner = Current.session.user.planners.find(params[:id])
+    if @planner.update(planner_params)
+      redirect_to user_home_path, notice: "Planner updated successfully."
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     planner = Current.session.user.planners.find(params[:id])
     planner.destroy
