@@ -5,6 +5,7 @@ FactoryBot.define do
     technique { "Legato" }
     fretboard { "CAGED" }
     repertoire { "Autumn Leaves" }
+    note { "Note about this week's plan" }
     user
   end
 end

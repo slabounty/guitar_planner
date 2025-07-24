@@ -23,6 +23,11 @@
         <%= form.text_field :repertoire, class: "w-full border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-200" %>
       </div>
 
+      <div>
+        <label class="block text-lg font-medium text-gray-700 mb-2">Notes</label>
+        <%= form.text_field :note, class: "w-full border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-200" %>
+      </div>
+
       <div class="flex justify-between pt-4">
         <%= link_to "Cancel", user_home_path, class: "bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-4 rounded-lg" %>
         <%= form.submit "Save", class: "bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg" %>
