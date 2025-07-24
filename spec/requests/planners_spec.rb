@@ -79,4 +79,31 @@ RSpec.describe "Planners", type: :request do
       expect(planner.technique).to eq("Updated Technique")
     end
   end
+
+  describe "POST /planners" do
+    context "with invalid parameters (missing start_date)" do
+      it "does not create a planner and re-renders the form" do
+        expect {
+          post planners_path, params: { planner: { start_date: nil, technique: "Alt picking", fretboard: "Modes", repertoire: "Canon in D" } }
+        }.not_to change(Planner, :count)
+
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response.body).to include("Start Date")
+      end
+    end
+  end
+
+  describe "PATCH /planners/:id" do
+    let!(:planner) { FactoryBot.create(:planner, user: @user, start_date: Date.today) }
+
+    context "with invalid parameters (missing start_date)" do
+      it "does not update the planner and re-renders the form" do
+        patch planner_path(planner), params: { planner: { start_date: nil } }
+
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response.body).to include("Start Date")
+        expect(planner.reload.start_date).not_to be_nil
+      end
+    end
+  end
 end

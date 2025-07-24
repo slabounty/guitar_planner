@@ -1,3 +1,14 @@
+<% if planner.errors.any? %>
+  <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded" role="alert">
+    <p class="font-bold">There were some problems with your submission:</p>
+    <ul class="list-disc list-inside">
+      <% planner.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_with model: planner, local: true do |form| %>
   <div class="grid grid-cols-1 gap-6">
     <div>

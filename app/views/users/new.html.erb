@@ -1,4 +1,14 @@
 <div class="max-w-md mx-auto mt-12 bg-white p-8 rounded-lg shadow-md">
+  <% if @user.errors.any? %>
+    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded" role="alert">
+      <p class="font-bold">There were some problems with your submission:</p>
+      <ul class="list-disc list-inside">
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <h2 class="text-2xl font-bold mb-6 text-gray-800 text-center">Create an Account</h2>
 
   <%= form_with(model: @user, url: signup_path, local: true, class: "space-y-4") do |f| %>
