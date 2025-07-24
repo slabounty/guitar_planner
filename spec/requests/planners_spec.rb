@@ -24,7 +24,7 @@ RSpec.describe "Planners", type: :request do
           technique: "Sweep Picking",
           fretboard: "Major Scale",
           repertoire: "Jazz Standard",
-          note: "Note about this week's plan",
+          note: "Note about this week's plan"
         }
       }
 
@@ -67,7 +67,7 @@ RSpec.describe "Planners", type: :request do
           start_date: planner.start_date,
           fretboard: planner.fretboard,
           repertoire: planner.repertoire,
-          note: planner.note,
+          note: planner.note
         }
       }
 
