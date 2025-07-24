@@ -27,6 +27,7 @@ RSpec.describe "users/show.html.erb" do
         technique: "some technique",
         fretboard: "some fretboard",
         repertoire: "some repertoire",
+        note: "some note",
       ) ])
     end
 
@@ -35,6 +36,7 @@ RSpec.describe "users/show.html.erb" do
       expect(rendered).to match(/some technique/)
       expect(rendered).to match(/some fretboard/)
       expect(rendered).to match(/some repertoire/)
+      expect(rendered).to match(/some note/)
     end
   end
 end

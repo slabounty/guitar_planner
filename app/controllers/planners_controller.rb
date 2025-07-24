@@ -35,6 +35,6 @@ class PlannersController < ApplicationController
   private
 
   def planner_params
-    params.require(:planner).permit(:start_date, :technique, :fretboard, :repertoire)
+    params.require(:planner).permit(:start_date, :technique, :fretboard, :repertoire, :note)
   end
 end

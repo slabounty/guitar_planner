@@ -5,7 +5,8 @@ RSpec.describe Planner, type: :model do
   let(:technique) { "some technique" }
   let(:fretboard) { "some fretboard" }
   let(:repertoire) { "some repertoire" }
-  let(:planner) { described_class.create(start_date: start_date, technique: technique, fretboard: fretboard, repertoire: repertoire) }
+  let(:note) { "some note" }
+  let(:planner) { described_class.create(start_date: start_date, technique: technique, fretboard: fretboard, repertoire: repertoire, note: note) }
 
   describe '#start_date' do
     subject(:planner_start_date) { planner.start_date }
@@ -36,6 +37,14 @@ RSpec.describe Planner, type: :model do
 
     it "has the correct repertoire" do
       expect(planner_repertoire).to eq(repertoire)
+    end
+  end
+
+  describe '#note' do
+    subject(:planner_note) { planner.note }
+
+    it "has the correct note" do
+      expect(planner_note).to eq(note)
     end
   end
 end

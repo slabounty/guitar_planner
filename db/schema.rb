@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_21_211403) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_24_160107) do
   create_table "planners", force: :cascade do |t|
     t.integer "user_id", null: false
     t.date "start_date"
@@ -19,6 +19,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_21_211403) do
     t.string "repertoire"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "note"
     t.index ["user_id"], name: "index_planners_on_user_id"
   end
 
