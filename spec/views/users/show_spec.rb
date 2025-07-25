@@ -25,8 +25,11 @@ RSpec.describe "users/show.html.erb" do
         id: 123,
         start_date: Date.today,
         technique: "some technique",
+        technique_bpm: 60,
         fretboard: "some fretboard",
+        fretboard_bpm: 62,
         repertoire: "some repertoire",
+        repertoire_bpm: 70,
         note: "some note",
       ) ])
     end
@@ -36,6 +39,9 @@ RSpec.describe "users/show.html.erb" do
       expect(rendered).to match(/some technique/)
       expect(rendered).to match(/some fretboard/)
       expect(rendered).to match(/some repertoire/)
+      expect(rendered).to match(/60/)
+      expect(rendered).to match(/62/)
+      expect(rendered).to match(/70/)
       expect(rendered).to match(/some note/)
     end
   end

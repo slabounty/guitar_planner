@@ -3,10 +3,17 @@ require 'rails_helper'
 RSpec.describe Planner, type: :model do
   let(:start_date) { Date.today }
   let(:technique) { "some technique" }
+  let(:technique_bpm) { 60 }
   let(:fretboard) { "some fretboard" }
+  let(:fretboard_bpm) { 62 }
   let(:repertoire) { "some repertoire" }
+  let(:repertoire_bpm) { 70 }
   let(:note) { "some note" }
-  let(:planner) { described_class.create(start_date: start_date, technique: technique, fretboard: fretboard, repertoire: repertoire, note: note) }
+  let(:planner) { described_class.create(start_date: start_date,
+                                         technique: technique, technique_bpm: technique_bpm,
+                                         fretboard: fretboard, fretboard_bpm: fretboard_bpm,
+                                         repertoire: repertoire, repertoire_bpm: repertoire_bpm,
+                                         note: note) }
 
   describe '#start_date' do
     subject(:planner_start_date) { planner.start_date }
