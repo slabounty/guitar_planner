@@ -22,8 +22,11 @@ RSpec.describe "Planners", type: :request do
         planner: {
           start_date: Date.today,
           technique: "Sweep Picking",
+          technique_bpm: 60,
           fretboard: "Major Scale",
+          fretboard_bpm: 62,
           repertoire: "Jazz Standard",
+          repertoire_bpm: 70,
           note: "Note about this week's plan"
         }
       }
@@ -31,6 +34,7 @@ RSpec.describe "Planners", type: :request do
       expect(response).to redirect_to(user_home_path)
       follow_redirect!
       expect(response.body).to include("Sweep Picking")
+      expect(response.body).to include("60")
     end
   end
 
@@ -48,14 +52,13 @@ RSpec.describe "Planners", type: :request do
     end
   end
 
-
-
   describe "GET /planners/:id/edit" do
     it "renders the edit form" do
       get edit_planner_path(planner)
       expect(response).to have_http_status(:ok)
       expect(response.body).to include("Edit Practice Planner")
       expect(response.body).to include(planner.technique)
+      expect(response.body).to include(planner.technique_bpm.to_s)
     end
   end
 
@@ -63,10 +66,13 @@ RSpec.describe "Planners", type: :request do
     it "updates the planner and redirects to user home" do
       patch planner_path(planner), params: {
         planner: {
-          technique: "Updated Technique",
           start_date: planner.start_date,
+          technique: "Updated Technique",
+          technique_bpm: 63,
           fretboard: planner.fretboard,
+          fretboard_bpm: planner.fretboard_bpm,
           repertoire: planner.repertoire,
+          repertoire_bpm: planner.repertoire_bpm,
           note: planner.note
         }
       }
@@ -77,6 +83,7 @@ RSpec.describe "Planners", type: :request do
 
       planner.reload
       expect(planner.technique).to eq("Updated Technique")
+      expect(planner.technique_bpm).to eq(63)
     end
   end
 

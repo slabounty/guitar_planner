@@ -1,7 +1,11 @@
 # app/controllers/planners_controller.rb
 class PlannersController < ApplicationController
   def new
-    @planner = Planner.new
+    @planner = Current.session.user.planners.new(
+      technique_bpm: 60,
+      fretboard_bpm: 60,
+      repertoire_bpm: 60
+    )
   end
 
   def create
@@ -35,6 +39,9 @@ class PlannersController < ApplicationController
   private
 
   def planner_params
-    params.require(:planner).permit(:start_date, :technique, :fretboard, :repertoire, :note)
+    params.require(:planner).permit(:start_date, :technique, :technique_bpm,
+                                    :fretboard, :fretboard_bpm,
+                                    :repertoire, :repertoire_bpm,
+                                    :note)
   end
 end
