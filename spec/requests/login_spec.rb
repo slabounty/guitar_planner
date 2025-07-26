@@ -38,4 +38,20 @@ RSpec.describe "User Login", type: :request do
       expect(response.body).to include(note)
     end
   end
+
+  describe "POST /session" do
+    let!(:user) { FactoryBot.create(:user, email_address: "test@example.com", password: "correctpassword") }
+
+    it "fails with incorrect password and shows error message" do
+      post session_path, params: {
+        email_address: "test@example.com",
+        password: "wrongpassword"
+      }
+
+      expect(response).to redirect_to(new_session_path)
+      follow_redirect!
+
+      expect(response.body).to include("Try another email address or password.")
+    end
+  end
 end
